@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Shopgo_ShippingCore>
+            <version>1.0.0</version>
+        </Shopgo_ShippingCore>
+    </modules>
+    <global>
+        <helpers>
+            <shippingcore>
+                <class>Shopgo_ShippingCore_Helper</class>
+            </shippingcore>
+        </helpers>
+        <models>
+            <shipping>
+                <rewrite>
+                    <info>Shopgo_ShippingCore_Model_Magento_Shipping_Info</info>
+                </rewrite>
+            </shipping>
+        </models>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <shippingcore before="Mage_Adminhtml">Shopgo_ShippingCore_Adminhtml</shippingcore>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>
