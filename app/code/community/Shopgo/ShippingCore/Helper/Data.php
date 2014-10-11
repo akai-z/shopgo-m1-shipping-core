@@ -1,6 +1,6 @@
 <?php
 
-class Shopgo_ShippingCore_Helper_Data extends Shopgo_ShippingCore_Helper_Abstract
+class Shopgo_ShippingCore_Helper_Data extends Shopgo_Core_Helper_Abstract
 {
     protected $_shopgoLogFile = 'shopgo_shipping_core.log';
 
