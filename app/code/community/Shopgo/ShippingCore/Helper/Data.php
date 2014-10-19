@@ -2,7 +2,7 @@
 
 class Shopgo_ShippingCore_Helper_Data extends Shopgo_Core_Helper_Abstract
 {
-    protected $_shopgoLogFile = 'shopgo_shipping_core.log';
+    protected $_logFile = 'shopgo_shipping_core.log';
 
     public function currencyConvert($price, $from, $to, $output = '', $round = null)
     {
