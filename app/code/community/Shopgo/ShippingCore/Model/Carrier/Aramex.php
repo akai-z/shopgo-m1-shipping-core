@@ -15,7 +15,7 @@ class Shopgo_ShippingCore_Model_Carrier_Aramex extends Shopgo_ShippingCore_Model
         return $this->isEnabled() && $carrierCode == self::CARRIER_CODE;
     }
 
-    public function saveShipment($shipment, $data, $controller)
+    public function saveShipment($shipment, $data)
     {
         $aramexShipment = true;
 
@@ -38,10 +38,8 @@ class Shopgo_ShippingCore_Model_Carrier_Aramex extends Shopgo_ShippingCore_Model
                 Mage::getSingleton('adminhtml/session')
                     ->setShipAramexPickupData($data['aramex']['pickup']);
             }
-
-            $controller->_getSession()->addError($controller->__('Cannot save shipment.'));
-            $controller->_redirect('*/*/new', array('order_id' => $controller->getRequest()->getParam('order_id')));
-            return false;
         }
+
+        return $aramexShipment;
     }
 }

@@ -15,7 +15,7 @@ class Shopgo_ShippingCore_Model_Carrier_Skynet extends Shopgo_ShippingCore_Model
         return $this->isEnabled() && $carrierCode == self::CARRIER_CODE;
     }
 
-    public function saveShipment($shipment, $data, $controller)
+    public function saveShipment($shipment, $data)
     {
         // TODO
     }

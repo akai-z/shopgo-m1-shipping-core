@@ -9,11 +9,11 @@ class Shopgo_ShippingCore_Model_Core extends Mage_Core_Model_Abstract
         switch (true) {
             case Mage::getModel('shippingcore/carrier_aramex')->isUsed($carrierCode):
                 Mage::getModel('shippingcore/carrier_aramex')
-                    ->saveShipment($shipment, $data, $controller);
+                    ->saveShipment($shipment, $data);
                 break;
             case Mage::getModel('shippingcore/carrier_skynet')->isUsed($carrierCode):
                 Mage::getModel('shippingcore/carrier_skynet')
-                    ->saveShipment($shipment, $data, $controller);
+                    ->saveShipment($shipment, $data);
                 break;
             default:
                 $controller->_saveShipment($shipment);

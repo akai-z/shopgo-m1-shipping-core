@@ -49,11 +49,14 @@ class Shopgo_ShippingCore_Adminhtml_Magento_Sales_Order_ShipmentController exten
                 $responseAjax->setOk(true);
             }
 
-            Mage::getModel('shippingcore/core')->saveShipment(
+            $shippingCoreResult = Mage::getModel('shippingcore/core')->saveShipment(
                 $shipment,
-                $this->getRequest()->getPost('shopgo'),
-                $this
+                $this->getRequest()->getPost('shopgo')
             );
+
+            if (!$shippingCoreResult) {
+                Mage::throwException($this->__('Cannot save shipment.'));
+            }
 
             $shipment->sendEmail(!empty($data['send_email']), $comment);
 
