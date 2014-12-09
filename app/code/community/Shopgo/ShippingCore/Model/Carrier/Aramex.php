@@ -2,7 +2,7 @@
 
 class Shopgo_ShippingCore_Model_Carrier_Aramex extends Shopgo_ShippingCore_Model_Carrier_Abstract
 {
-    const MODULE_NAME  = 'aramexshipping';
+    const MODULE_NAME  = 'Shopgo_AramexShipping';
     const CARRIER_CODE = 'aramex';
 
     public function isEnabled()

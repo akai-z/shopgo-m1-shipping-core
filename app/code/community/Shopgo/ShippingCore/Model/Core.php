@@ -2,22 +2,23 @@
 
 class Shopgo_ShippingCore_Model_Core extends Mage_Core_Model_Abstract
 {
-    public function saveShipment($shipment, $data, $controller)
+    public function saveShipment($shipment, $data)
     {
+        $result = false;
         $carrierCode = $shipment->getOrder()->getShippingCarrier()->getCarrierCode();
 
         switch (true) {
             case Mage::getModel('shippingcore/carrier_aramex')->isUsed($carrierCode):
-                Mage::getModel('shippingcore/carrier_aramex')
+                $result = Mage::getModel('shippingcore/carrier_aramex')
                     ->saveShipment($shipment, $data);
                 break;
             case Mage::getModel('shippingcore/carrier_skynet')->isUsed($carrierCode):
-                Mage::getModel('shippingcore/carrier_skynet')
+                $result = Mage::getModel('shippingcore/carrier_skynet')
                     ->saveShipment($shipment, $data);
                 break;
-            default:
-                $controller->_saveShipment($shipment);
         }
+
+        return $result;
     }
 
     public function processTrackingInfo($trackingInfo, $carrierCode)
@@ -41,11 +42,11 @@ class Shopgo_ShippingCore_Model_Core extends Mage_Core_Model_Abstract
         switch (true) {
             case Mage::getModel('shippingcore/carrier_aramex')->isUsed($carrierCode):
                 $trackingInfo = Mage::getModel('shippingcore/carrier_aramex')
-                    ->processTrackingInfo($trackingInfo);
+                    ->processTrackingInfoByTrackId($trackingInfo);
                 break;
             case Mage::getModel('shippingcore/carrier_skynet')->isUsed($carrierCode):
                 $trackingInfo = Mage::getModel('shippingcore/carrier_skynet')
-                    ->processTrackingInfo($trackingInfo);
+                    ->processTrackingInfoByTrackId($trackingInfo);
                 break;
             default:
                 $trackingInfo = array(array($trackingInfo));

@@ -2,7 +2,7 @@
 
 require_once 'Mage/Adminhtml/controllers/Sales/Order/ShipmentController.php';
 
-class Shopgo_ShippingCore_Adminhtml_Magento_Sales_Order_ShipmentController extends Mage_Adminhtml_Sales_Order_ShipmentController
+class Shopgo_ShippingCore_Adminhtml_Sales_Order_ShipmentController extends Mage_Adminhtml_Sales_Order_ShipmentController
 {
     /**
      * Save shipment

@@ -2,7 +2,7 @@
 
 class Shopgo_ShippingCore_Model_Carrier_Skynet extends Shopgo_ShippingCore_Model_Carrier_Abstract
 {
-    const MODULE_NAME  = 'skynetshipping';
+    const MODULE_NAME  = 'Shopgo_SkynetShipping';
     const CARRIER_CODE = 'skynet';
 
     public function isEnabled()

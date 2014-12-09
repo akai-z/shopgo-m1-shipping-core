@@ -12,6 +12,9 @@
             </shippingcore>
         </helpers>
         <models>
+            <shippingcore>
+                <class>Shopgo_ShippingCore_Model</class>
+            </shippingcore>
             <shipping>
                 <rewrite>
                     <info>Shopgo_ShippingCore_Model_Magento_Shipping_Info</info>
