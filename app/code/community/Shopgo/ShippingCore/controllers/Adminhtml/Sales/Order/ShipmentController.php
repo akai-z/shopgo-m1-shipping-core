@@ -49,13 +49,19 @@ class Shopgo_ShippingCore_Adminhtml_Sales_Order_ShipmentController extends Mage_
                 $responseAjax->setOk(true);
             }
 
-            $shippingCoreResult = Mage::getModel('shippingcore/core')->saveShipment(
-                $shipment,
-                $this->getRequest()->getPost('shopgo')
+            $isShopgoShippingMethod = Mage::helper('shippingcore/abstract')->isShopgoShippingMethod(
+                $shipment->getOrder()->getShippingCarrier()->getCarrierCode()
             );
 
-            if (!$shippingCoreResult) {
-                Mage::throwException($this->__('Cannot save shipment.'));
+            if ($isShopgoShippingMethod) {
+                $shippingCoreResult = Mage::getModel('shippingcore/core')->saveShipment(
+                    $shipment,
+                    $this->getRequest()->getPost('shopgo')
+                );
+
+                if (!$shippingCoreResult) {
+                    Mage::throwException($this->__('Cannot save shipment.'));
+                }
             }
 
             $shipment->sendEmail(!empty($data['send_email']), $comment);

@@ -88,4 +88,20 @@ class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Abstract
 
         return $result;
     }
+
+    public function isShopgoShippingMethod($carrierCode)
+    {
+        $result = false;
+
+        switch (true) {
+            case Mage::getModel('shippingcore/carrier_aramex')->isUsed($carrierCode):
+                $result = $carrierCode;
+                break;
+            case Mage::getModel('shippingcore/carrier_skynet')->isUsed($carrierCode):
+                $result = $carrierCode;
+                break;
+        }
+
+        return $result;
+    }
 }
