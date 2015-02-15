@@ -62,6 +62,8 @@ class Shopgo_ShippingCore_Adminhtml_Sales_Order_ShipmentController extends Mage_
                 if (!$shippingCoreResult) {
                     Mage::throwException($this->__('Cannot save shipment.'));
                 }
+            } else {
+                $this->_saveShipment($shipment);
             }
 
             $shipment->sendEmail(!empty($data['send_email']), $comment);
