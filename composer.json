@@ -1,0 +1,16 @@
+{
+    "name": "shopgo/Shopgo_ShippingCore",
+    "type": "magento-module",
+    "license": "GPLv2",
+    "description": "Contains functions commonly used in Shopgo Magento shipping extensions",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*",
+        "shopgo/shopgo_core": "dev-master"
+    },
+    "authors":[
+        {
+            "name": "Ammar@Shopgo",
+            "email": "ammar@shopgo.me"
+        }
+    ]
+}
