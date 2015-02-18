@@ -1,4 +1,22 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * ShopGo
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the GNU General Public License (GPLv2)
+ * that is bundled with this package in the file COPYING.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * @category    Shopgo
+ * @package     Shopgo_ShippingCore
+ * @author      Ammar <ammar@shopgo.me>
+ * @copyright   Copyright (c) 2014 Shopgo. (http://www.shopgo.me)
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html  GNU General Public License (GPLv2)
+ */
+-->
 <config>
     <modules>
         <Shopgo_ShippingCore>
@@ -21,7 +39,27 @@
                 </rewrite>
             </shipping>
         </models>
+        <events>
+            <adv_ifconfig_custom_rules>
+                <observers>
+                    <set_admin_sales_order_shipment_new_css_js_files>
+                        <type>singleton</type>
+                        <class>shippingcore/observer</class>
+                        <method>setAdminSalesOrderShipmentNewCssJsFiles</method>
+                    </set_admin_sales_order_shipment_new_css_js_files>
+                </observers>
+            </adv_ifconfig_custom_rules>
+        </events>
     </global>
+    <frontend>
+        <layout>
+            <updates>
+                <shippingcore>
+                    <file>shopgo/shipping_core.xml</file>
+                </shippingcore>
+            </updates>
+        </layout>
+    </frontend>
     <admin>
         <routers>
             <adminhtml>
@@ -33,4 +71,13 @@
             </adminhtml>
         </routers>
     </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <shippingcore>
+                    <file>shopgo/shipping_core.xml</file>
+                </shippingcore>
+            </updates>
+        </layout>
+    </adminhtml>
 </config>

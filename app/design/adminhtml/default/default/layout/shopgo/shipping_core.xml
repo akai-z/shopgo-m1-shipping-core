@@ -17,14 +17,12 @@
  * @license     http://www.gnu.org/licenses/gpl-2.0.html  GNU General Public License (GPLv2)
  */
 -->
-<config>
-    <modules>
-        <Shopgo_ShippingCore>
-            <active>true</active>
-            <codePool>community</codePool>
-            <depends>
-                <Shopgo_Core/>
-            </depends>
-        </Shopgo_ShippingCore>
-    </modules>
-</config>
+<layout version="0.1.0">
+    <adminhtml_sales_order_shipment_new>
+        <reference name="form">
+            <action method="setTemplate">
+                <file>shopgo/shipping_core/sales/order/shipment/create/form.phtml</file>
+            </action>
+        </reference>
+    </adminhtml_sales_order_shipment_new>
+</layout>

@@ -17,14 +17,10 @@
  * @license     http://www.gnu.org/licenses/gpl-2.0.html  GNU General Public License (GPLv2)
  */
 -->
-<config>
-    <modules>
-        <Shopgo_ShippingCore>
-            <active>true</active>
-            <codePool>community</codePool>
-            <depends>
-                <Shopgo_Core/>
-            </depends>
-        </Shopgo_ShippingCore>
-    </modules>
-</config>
+<layout version="0.1.0">
+    <checkout_cart_index>
+        <reference name="checkout.cart.shipping">
+            <action method="setTemplate"><template>shopgo/shipping_core/checkout/cart/shipping.phtml</template></action>
+        </reference>
+    </checkout_cart_index>
+</layout>

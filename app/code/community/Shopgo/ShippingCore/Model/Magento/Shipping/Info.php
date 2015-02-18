@@ -1,7 +1,35 @@
 <?php
+/**
+ * ShopGo
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the GNU General Public License (GPLv2)
+ * that is bundled with this package in the file COPYING.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * @category    Shopgo
+ * @package     Shopgo_ShippingCore
+ * @copyright   Copyright (c) 2014 Shopgo. (http://www.shopgo.me)
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html  GNU General Public License (GPLv2)
+ */
 
+
+/**
+ * Shipping info model
+ *
+ * @category    Shopgo
+ * @package     Shopgo_ShippingCore
+ * @author      Ammar <ammar@shopgo.me>
+ */
 class Shopgo_ShippingCore_Model_Magento_Shipping_Info extends Mage_Shipping_Model_Info
 {
+    /**
+     * Get tracking info by order
+     *
+     * @return array
+     */
     public function getTrackingInfoByOrder()
     {
         $shipTrack = array();
@@ -30,6 +58,11 @@ class Shopgo_ShippingCore_Model_Magento_Shipping_Info extends Mage_Shipping_Mode
         return $this->_trackingInfo;
     }
 
+    /**
+     * Get tracking info by ship
+     *
+     * @return array
+     */
     public function getTrackingInfoByShip()
     {
         $shipTrack = array();
@@ -56,6 +89,11 @@ class Shopgo_ShippingCore_Model_Magento_Shipping_Info extends Mage_Shipping_Mode
         return $this->_trackingInfo;
     }
 
+    /**
+     * Get tracking info by track ID
+     *
+     * @return array
+     */
     public function getTrackingInfoByTrackId()
     {
         $track = Mage::getModel('sales/order_shipment_track')->load($this->getTrackId());

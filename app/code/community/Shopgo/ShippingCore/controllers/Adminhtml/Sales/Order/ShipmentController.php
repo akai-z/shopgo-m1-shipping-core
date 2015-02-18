@@ -1,5 +1,28 @@
 <?php
+/**
+ * ShopGo
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the GNU General Public License (GPLv2)
+ * that is bundled with this package in the file COPYING.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * @category    Shopgo
+ * @package     Shopgo_ShippingCore
+ * @copyright   Copyright (c) 2014 Shopgo. (http://www.shopgo.me)
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html  GNU General Public License (GPLv2)
+ */
 
+
+/**
+ * Adminhtml shipment controller
+ *
+ * @category    Shopgo
+ * @package     Shopgo_ShippingCore
+ * @author      Ammar <ammar@shopgo.me>
+ */
 require_once 'Mage/Adminhtml/controllers/Sales/Order/ShipmentController.php';
 
 class Shopgo_ShippingCore_Adminhtml_Sales_Order_ShipmentController extends Mage_Adminhtml_Sales_Order_ShipmentController

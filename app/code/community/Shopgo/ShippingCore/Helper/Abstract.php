@@ -1,9 +1,47 @@
 <?php
+/**
+ * ShopGo
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the GNU General Public License (GPLv2)
+ * that is bundled with this package in the file COPYING.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * @category    Shopgo
+ * @package     Shopgo_ShippingCore
+ * @copyright   Copyright (c) 2014 Shopgo. (http://www.shopgo.me)
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html  GNU General Public License (GPLv2)
+ */
 
+
+/**
+ * Abstract helper class
+ *
+ * @category    Shopgo
+ * @package     Shopgo_ShippingCore
+ * @author      Ammar <ammar@shopgo.me>
+ */
 class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Abstract
 {
+    /**
+     * Log file name
+     *
+     * @var string
+     */
     protected $_logFile = 'shopgo_shipping_core.log';
 
+    /**
+     * Improved currency convert method
+     *
+     * @param float $price
+     * @param string $from
+     * @param string $to
+     * @param string $output
+     * @param integer $round
+     * @return array
+     */
     public function currencyConvert($price, $from, $to, $output = '', $round = null)
     {
         $from = strtoupper($from);
@@ -77,6 +115,13 @@ class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Abstract
         return $result;
     }
 
+    /**
+     * Convert shipping rate to base currency
+     *
+     * @param float $price
+     * @param string $priceCurrencyCode
+     * @return array
+     */
     public function convertRateCurrency($price, $priceCurrencyCode)
     {
         $baseCurrencyCode = Mage::app()->getStore()->getBaseCurrencyCode();
@@ -89,6 +134,12 @@ class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Abstract
         return $result;
     }
 
+    /**
+     * Check if order's shipping method is a Shopgo shipping method
+     *
+     * @param string $carrierCode
+     * @return boolean
+     */
     public function isShopgoShippingMethod($carrierCode)
     {
         $result = false;
@@ -103,5 +154,28 @@ class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Abstract
         }
 
         return $result;
+    }
+
+    /**
+     * Get order's shipping method adminhtml ship page forms
+     *
+     * @param string $carrierCode
+     * @param object $block
+     * @return string
+     */
+    public function getAdminhtmlShipmentForms($carrierCode, $block)
+    {
+        $html = "";
+
+        switch ($carrierCode) {
+            case 'aramex':
+                $html = Mage::helper('aramexshipping')->_getAdminhtmlShipmentForms($block);
+                break;
+            case 'skynet':
+                $html = Mage::helper('skynetshipping')->_getAdminhtmlShipmentForms($block);
+                break;
+        }
+
+        return $html;
     }
 }
