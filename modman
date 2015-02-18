@@ -1,2 +1,6 @@
-app/code/community/Shopgo/ShippingCore/       app/code/community/Shopgo/ShippingCore/
-app/etc/modules/Shopgo_ShippingCore.xml       app/etc/modules/Shopgo_ShippingCore.xml
+app/code/community/Shopgo/ShippingCore/                                    app/code/community/Shopgo/ShippingCore/
+app/design/adminhtml/default/default/layout/shopgo/shipping_core.xml       app/design/adminhtml/default/default/layout/shopgo/shipping_core.xml
+app/design/adminhtml/default/default/template/shopgo/shipping_core/        app/design/adminhtml/default/default/template/shopgo/shipping_core/
+app/design/frontend/base/default/layout/shopgo/shipping_core.xml           app/design/frontend/base/default/layout/shopgo/shipping_core.xml
+app/design/frontend/base/default/template/shopgo/shipping_core/            app/design/frontend/base/default/template/shopgo/shipping_core/
+app/etc/modules/Shopgo_ShippingCore.xml                                    app/etc/modules/Shopgo_ShippingCore.xml
