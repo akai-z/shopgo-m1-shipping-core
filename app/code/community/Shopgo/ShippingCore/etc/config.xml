@@ -20,7 +20,7 @@
 <config>
     <modules>
         <Shopgo_ShippingCore>
-            <version>1.0.0</version>
+            <version>1.0.2</version>
         </Shopgo_ShippingCore>
     </modules>
     <global>
