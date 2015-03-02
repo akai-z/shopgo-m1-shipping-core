@@ -1,7 +1,7 @@
 {
     "name": "shopgo/Shopgo_ShippingCore",
     "type": "magento-module",
-    "license": "GPLv2",
+    "license": "OSL-3.0",
     "description": "Contains functions commonly used in Shopgo Magento shipping extensions",
     "require": {
         "magento-hackathon/magento-composer-installer": "*",
