@@ -23,7 +23,7 @@
  * @package     Shopgo_ShippingCore
  * @author      Ammar <ammar@shopgo.me>
  */
-class Shopgo_ShippingCore_Model_Carrier_Abstract extends Mage_Core_Model_Abstract
+abstract class Shopgo_ShippingCore_Model_Carrier_Abstract extends Mage_Core_Model_Abstract
 {
     /**
      * Process shipment tracking info
