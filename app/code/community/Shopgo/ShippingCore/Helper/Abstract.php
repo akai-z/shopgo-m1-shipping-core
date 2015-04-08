@@ -92,12 +92,11 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
         if ($from != $to) {
             $allowedCurrencies = Mage::getModel('directory/currency')
                 ->getConfigAllowCurrencies();
+
             $rates = Mage::getModel('directory/currency')
                 ->getCurrencyRates($baseCurrencyCode, array_values($allowedCurrencies));
 
-            if (empty($rates) || !isset($rates[$from]) || !isset($rates[$to])) {
-                $error = true;
-            } elseif (empty($rates[$from]) || empty($rates[$to])) {
+            if (empty($rates) || empty($rates[$from]) || empty($rates[$to])) {
                 $error = true;
             }
 
