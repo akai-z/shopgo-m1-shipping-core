@@ -1,0 +1,92 @@
+<?php
+/**
+ * ShopGo
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ *
+ * @category    Shopgo
+ * @package     Shopgo_ShippingCore
+ * @author      Ammar <ammar@shopgo.me>
+ * @copyright   Copyright (c) 2014 Shopgo. (http://www.shopgo.me)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php echo $this->getButtonHtml() ?>
+<script type="text/javascript">//<![CDATA[
+if (typeof shopgo == 'undefined') {
+    var shopgo = new Object();
+}
+if (typeof shopgo.shippingCore == 'undefined') {
+    shopgo.shippingCore = new Object();
+}
+
+shopgo.shippingCore.dwaButton = {
+    elmClassPrefix: 'shipping_dwa_',
+    setAttributes: function() {
+        var _params = {
+            attribute_set_value: $(this.elmClassPrefix + 'attribute_set').value,
+            attribute_set_text: $(this.elmClassPrefix + 'attribute_set')
+                .options[$(this.elmClassPrefix + 'attribute_set').selectedIndex].text,
+            attribute_set_group_value: $(this.elmClassPrefix + 'attribute_set_group').value,
+            attribute_set_group_text: $(this.elmClassPrefix + 'attribute_set_group')
+                .options[$(this.elmClassPrefix + 'attribute_set_group').selectedIndex].text
+        };
+
+        new Ajax.Request('<?php echo $this->getSetAttributesAjaxActionUrl() ?>', {
+            parameters: _params,
+            onSuccess: function(transport) {
+                if (transport.responseText) {
+                    var response = transport.responseText.evalJSON(true);
+
+                    if (response.status) {
+                        location.reload();
+                    } else {
+                        alert(response.description);
+                    }
+                }
+            }
+        });
+    },
+    getAttrSetGroups: function() {
+        var _params = {
+            attribute_set: $(this.elmClassPrefix + 'attribute_set').value
+        };
+
+        new Ajax.Request('<?php echo $this->getAsgAjaxActionUrl() ?>', {
+            parameters: _params,
+            onSuccess: function(transport) {
+                if (transport.responseText) {
+                    var response = transport.responseText.evalJSON(true);
+
+                    if (response.status) {
+                        var groupsElm = $(shopgo.shippingCore.dwaButton.elmClassPrefix + 'attribute_set_group');
+
+                        groupsElm.select('option').invoke('remove');
+
+                        response.data.forEach(function(element, index, array) {
+                            groupsElm.insert(
+                                new Element('option', {value: element.value}).update(element.label)
+                            );
+                        });
+                    } else {
+                        alert(response.description);
+                    }
+                }
+            }
+        });
+    }
+};
+
+document.observe("dom:loaded", function() {
+    $(shopgo.shippingCore.dwaButton.elmClassPrefix + 'attribute_set').observe(
+        'change', function(event) {
+            shopgo.shippingCore.dwaButton.getAttrSetGroups();
+        }
+    );
+});
+//]]></script>

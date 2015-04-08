@@ -73,12 +73,6 @@ class Shopgo_ShippingCore_Model_Carrier_Skynet extends Shopgo_ShippingCore_Model
                 Mage::getSingleton('adminhtml/session')
                     ->setShipSkynetShipmentData($shopgoData['skynet']['shipment']);
             }
-
-            /*if (isset($data['skynet']['pickup']['enabled'])
-                && $data['skynet']['pickup']['enabled']) {
-                Mage::getSingleton('adminhtml/session')
-                    ->setShipSkynetPickupData($data['skynet']['pickup']);
-            }*/
         }
 
         return $skynetShipment;

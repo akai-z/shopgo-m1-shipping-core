@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * ShopGo
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ *
+ * @category    Shopgo
+ * @package     Shopgo_ShippingCore
+ * @author      Ammar <ammar@shopgo.me>
+ * @copyright   Copyright (c) 2014 Shopgo. (http://www.shopgo.me)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+    <menu>
+        <shopgo translate="title" module="shippingcore">
+            <title>ShopGo</title>
+            <sort_order>71</sort_order>
+            <children>
+                <shippingcore translate="title" module="shippingcore">
+                    <title>Shipping Methods</title>
+                    <sort_order>10</sort_order>
+                    <children>
+                        <shipping_methods translate="title" module="shippingcore">
+                            <title>General</title>
+                            <sort_order>10</sort_order>
+                            <children>
+                                <shipping_settings translate="title" module="shippingcore">
+                                    <title>Shipping Settings</title>
+                                    <sort_order>10</sort_order>
+                                    <action>adminhtml/system_config/edit/section/shipping</action>
+                                </shipping_settings>
+                                <methods_configurations translate="title" module="shippingcore">
+                                    <title>Methods Configurations</title>
+                                    <sort_order>20</sort_order>
+                                    <action>adminhtml/system_config/edit/section/carriers</action>
+                                </methods_configurations>
+                            </children>
+                        </shipping_methods>
+                    </children>
+                </shippingcore>
+            </children>
+        </shopgo>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <shopgo translate="title" module="shippingcore">
+                        <title>ShopGo</title>
+                        <sort_order>71</sort_order>
+                        <children>
+                            <shippingcore translate="title" module="shippingcore">
+                                <title>Shipping Methods</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <shipping_methods translate="title" module="shippingcore">
+                                        <title>General</title>
+                                        <sort_order>10</sort_order>
+                                        <children>
+                                            <shipping_settings translate="title" module="shippingcore">
+                                                <title>Shipping Settings</title>
+                                                <sort_order>10</sort_order>
+                                            </shipping_settings>
+                                            <methods_configurations translate="title" module="shippingcore">
+                                                <title>Methods Configurations</title>
+                                                <sort_order>20</sort_order>
+                                            </methods_configurations>
+                                        </children>
+                                    </shipping_methods>
+                                </children>
+                            </shippingcore>
+                        </children>
+                    </shopgo>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

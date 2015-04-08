@@ -26,6 +26,22 @@
 abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Abstract
 {
     /**
+     * Dimensional weight attribute length
+     */
+    const LENGTH = 'length';
+
+    /**
+     * Dimensional weight attribute width
+     */
+    const WIDTH  = 'width';
+
+    /**
+     * Dimensional weight attribute height
+     */
+    const HEIGHT = 'height';
+
+
+    /**
      * Log file name
      *
      * @var string
@@ -177,5 +193,39 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
         }
 
         return $html;
+    }
+
+    /**
+     * Get dimensional weight attributes names
+     *
+     * @return array
+     */
+    public function getDwaNames()
+    {
+        $attributes = array(
+            self::LENGTH,
+            self::WIDTH,
+            self::HEIGHT
+        );
+
+        return $attributes;
+    }
+
+    /**
+     * Get dimensional weight attributes codes
+     *
+     * @return array
+     */
+    public function getDwaCodes()
+    {
+        $path = 'shipping/dwa/';
+        $attributes = $this->getDwaNames();
+        $result = array();
+
+        foreach ($attributes as $attr) {
+            $result[$attr] = Mage::getStoreConfig($path . $attr);
+        }
+
+        return $result;
     }
 }

@@ -20,10 +20,15 @@
 <config>
     <modules>
         <Shopgo_ShippingCore>
-            <version>1.0.2</version>
+            <version>1.1.2</version>
         </Shopgo_ShippingCore>
     </modules>
     <global>
+        <blocks>
+            <shippingcore>
+                <class>Shopgo_ShippingCore_Block</class>
+            </shippingcore>
+        </blocks>
         <helpers>
             <shippingcore>
                 <class>Shopgo_ShippingCore_Helper</class>
@@ -39,6 +44,14 @@
                 </rewrite>
             </shipping>
         </models>
+        <resources>
+            <shippingcore_setup>
+                <setup>
+                    <module>Shopgo_ShippingCore</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </shippingcore_setup>
+        </resources>
         <events>
             <adv_ifconfig_custom_rules>
                 <observers>
