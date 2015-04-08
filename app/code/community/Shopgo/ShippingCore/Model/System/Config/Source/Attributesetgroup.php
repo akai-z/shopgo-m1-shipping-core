@@ -48,7 +48,7 @@ class Shopgo_ShippingCore_Model_System_Config_Source_Attributesetgroup
         }
 
         $attrSetGroupCollection = Mage::getResourceModel('eav/entity_attribute_group_collection')
-            ->setOrder('attribute_group_id', ASC)
+            ->setOrder('attribute_group_id', Varien_Data_Collection::SORT_ORDER_ASC)
             ->setAttributeSetFilter($attrSet)
             ->load();
 
