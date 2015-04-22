@@ -72,7 +72,7 @@ class Shopgo_ShippingCore_Adminhtml_Sales_Order_ShipmentController extends Mage_
                 $responseAjax->setOk(true);
             }
 
-            $isShopgoShippingMethod = Mage::helper('shippingcore/abstract')->isShopgoShippingMethod(
+            $isShopgoShippingMethod = Mage::helper('shippingcore')->isShopgoShippingMethod(
                 $shipment->getOrder()->getShippingCarrier()->getCarrierCode()
             );
 

@@ -64,7 +64,7 @@
     <div class="clear"></div>
 
     <?php
-        echo Mage::helper('shippingcore/abstract')->getAdminhtmlShipmentForms(
+        echo Mage::helper('shippingcore')->getAdminhtmlShipmentForms(
             $_order->getShippingCarrier()->getCarrierCode(),
             $this
         );
