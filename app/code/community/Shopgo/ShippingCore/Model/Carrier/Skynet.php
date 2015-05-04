@@ -71,7 +71,7 @@ class Shopgo_ShippingCore_Model_Carrier_Skynet extends Shopgo_ShippingCore_Model
         if (!$skynetShipment) {
             if (isset($data['skynet']['shipment'])) {
                 Mage::getSingleton('adminhtml/session')
-                    ->setShipSkynetShipmentData($shopgoData['skynet']['shipment']);
+                    ->setShipSkynetShipmentData($data['skynet']['shipment']);
             }
         }
 

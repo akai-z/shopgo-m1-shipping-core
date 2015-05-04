@@ -71,7 +71,7 @@ class Shopgo_ShippingCore_Model_Carrier_Aramex extends Shopgo_ShippingCore_Model
         if (!$aramexShipment) {
             if (isset($data['aramex']['shipment'])) {
                 Mage::getSingleton('adminhtml/session')
-                    ->setShipAramexShipmentData($shopgoData['aramex']['shipment']);
+                    ->setShipAramexShipmentData($data['aramex']['shipment']);
             }
 
             if (isset($data['aramex']['pickup']['enabled'])
