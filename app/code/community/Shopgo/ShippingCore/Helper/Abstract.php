@@ -252,8 +252,9 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
     /**
      * Get/Set/Unset cash on delivery enabled methods session values
      *
-     * @param array $toArray
-     * @return array|string
+     * @param string $action
+     * @param mixed $value
+     * @return mixed
      */
     public function codEnabledShippingMethods($action = 'get', $value = null)
     {
