@@ -81,7 +81,7 @@ class Shopgo_ShippingCore_Adminhtml_Shopgo_ShippingcoreController extends Mage_A
             return;
         }
 
-        $groups = Mage::getModel('shippingcore/system_config_source_attributesetgroups')
+        $groups = Mage::getModel('shippingcore/system_config_source_attributesetgroup')
             ->toOptionArray($params['attribute_set']);
 
         if (!empty($groups)) {

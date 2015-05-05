@@ -73,4 +73,42 @@ class Shopgo_ShippingCore_Model_Observer
                 break;
         }
     }
+
+    /**
+     * Remove non cash on delivery methods from checkout page payment step
+     *
+     * @param object $observer
+     * @return null
+     */
+    public function filterOutNonCodPaymentMethods(Varien_Event_Observer $observer)
+    {
+        $session = Mage::getSingleton('checkout/session');
+
+        if (!$session->hasQuote()) {
+            return;
+        }
+
+        $helper = Mage::helper('shippingcore');
+
+        $shippingMethod = explode(
+            '_',
+            $session->getQuote()->getShippingAddress()->getShippingMethod()
+        );
+        $shippingCode   = array_shift($shippingMethod);
+
+        $codEnabledShippingMethods = $helper->codEnabledShippingMethods();
+
+        if (!in_array($shippingCode, $codEnabledShippingMethods)) {
+            return;
+        }
+
+        $codMethods = $helper->getCodMethodList();
+
+        $result = $observer->getEvent()->getResult();
+        $method = $observer->getEvent()->getMethodInstance();
+
+        $result->isAvailable =
+            !in_array($method->getCode(), $codMethods)
+            ? false : true;
+    }
 }

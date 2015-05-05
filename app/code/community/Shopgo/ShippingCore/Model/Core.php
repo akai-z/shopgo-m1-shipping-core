@@ -30,7 +30,7 @@ class Shopgo_ShippingCore_Model_Core extends Mage_Core_Model_Abstract
      *
      * @param object $shipment
      * @param array $data
-     * @return boolean
+     * @return bool
      */
     public function saveShipment($shipment, $data)
     {

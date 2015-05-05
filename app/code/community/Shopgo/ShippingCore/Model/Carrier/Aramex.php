@@ -30,7 +30,7 @@ class Shopgo_ShippingCore_Model_Carrier_Aramex extends Shopgo_ShippingCore_Model
     /**
      * Check if module is active
      *
-     * @return boolean
+     * @return bool
      */
     public function isEnabled()
     {
@@ -41,7 +41,7 @@ class Shopgo_ShippingCore_Model_Carrier_Aramex extends Shopgo_ShippingCore_Model
      * Check if shipping method is enabled and used in an order
      *
      * @param string $carrierCode
-     * @return boolean
+     * @return bool
      */
     public function isUsed($carrierCode)
     {
@@ -54,7 +54,7 @@ class Shopgo_ShippingCore_Model_Carrier_Aramex extends Shopgo_ShippingCore_Model
      *
      * @param object $shipment
      * @param array $data
-     * @return boolean
+     * @return bool
      */
     public function saveShipment($shipment, $data)
     {

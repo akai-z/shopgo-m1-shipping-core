@@ -49,13 +49,21 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
     protected $_logFile = 'shopgo_shipping_core.log';
 
     /**
+     * Cash on delivery enabled shipping methods
+     *
+     * @var array
+     */
+    protected $_codEnabledShippingMethods = array();
+
+
+    /**
      * Improved currency convert method
      *
      * @param float $price
      * @param string $from
      * @param string $to
      * @param string $output
-     * @param integer $round
+     * @param int $round
      * @return array
      */
     public function currencyConvert($price, $from, $to, $output = '', $round = null)
@@ -223,6 +231,45 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
 
         foreach ($attributes as $attr) {
             $result[$attr] = Mage::getStoreConfig($path . $attr);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Get cash on delivery method list
+     *
+     * @param array $toArray
+     * @return array|string
+     */
+    public function getCodMethodList($toArray = true)
+    {
+        $methods = Mage::getStoreConfig('shipping/cod_method/list');
+
+        return $toArray ? explode(',', $methods) : $methods;
+    }
+
+    /**
+     * Get/Set/Unset cash on delivery enabled methods session values
+     *
+     * @param array $toArray
+     * @return array|string
+     */
+    public function codEnabledShippingMethods($action = 'get', $value = null)
+    {
+        $result  = null;
+        $session = Mage::getSingleton('checkout/session');
+
+        switch ($action) {
+            case 'get':
+                $result = $session->getCodEnabledShippingMethods();
+                break;
+            case 'set':
+                $result = $session->setCodEnabledShippingMethods($value);
+                break;
+            case 'uns':
+                $result = $session->unsCodEnabledShippingMethods();
+                break;
         }
 
         return $result;

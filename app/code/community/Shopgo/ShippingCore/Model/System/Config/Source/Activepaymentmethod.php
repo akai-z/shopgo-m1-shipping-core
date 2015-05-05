@@ -23,7 +23,7 @@
  * @package     Shopgo_ShippingCore
  * @author      Ammar <ammar@shopgo.me>
  */
-class Shopgo_ShippingCore_Model_System_Config_Source_Activepaymentmethods
+class Shopgo_ShippingCore_Model_System_Config_Source_Activepaymentmethod
 {
     /**
      * Get active payment methods
@@ -32,7 +32,7 @@ class Shopgo_ShippingCore_Model_System_Config_Source_Activepaymentmethods
      */
     public function toOptionArray($isMultiSelect = false)
     {
-        $options = Mage::helper('payment')->getPaymentMethodList(true, true, true);
+        $options = Mage::helper('shippingcore')->getPaymentMethodList(true, true, true, true);
 
         if ($isMultiSelect) {
             array_unshift($options, array('value' => '', 'label' => Mage::helper('adminhtml')->__('--Please Select--')));
