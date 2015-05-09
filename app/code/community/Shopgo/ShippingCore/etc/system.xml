@@ -21,10 +21,120 @@
     <sections>
         <shipping translate="label" module="shippingcore">
             <groups>
+                <origin translate="label">
+                    <fields>
+                        <street_line3 translate="label">
+                            <label>Street Address Line 3</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </street_line3>
+                    </fields>
+                </origin>
+                <additional_info translate="label">
+                    <label>Additional Info</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>6</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <person_title translate="label">
+                            <label>Person Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </person_title>
+                        <person_name translate="label">
+                            <label>Person Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </person_name>
+                        <company translate="label">
+                            <label>Company</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </company>
+                        <store_description translate="label">
+                            <label>Store Description</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </store_description>
+                        <phone_number translate="label">
+                            <label>Phone Number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </phone_number>
+                        <phone_number_ext translate="label">
+                            <label>Phone Number Ext</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </phone_number_ext>
+                        <phone_number2 translate="label">
+                            <label>Phone Number 2</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </phone_number2>
+                        <phone_number2_ext translate="label">
+                            <label>Phone Number 2 Ext</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </phone_number2_ext>
+                        <faxnumber translate="label">
+                            <label>Fax Number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </faxnumber>
+                        <email translate="label">
+                            <label>Email</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </email>
+                        <cellphone translate="label">
+                            <label>Cellphone</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cellphone>
+                    </fields>
+                </additional_info>
                 <dwa translate="label">
                     <label>Dimensional Weight Attributes</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>4</sort_order>
+                    <sort_order>7</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
@@ -97,7 +207,7 @@
                 <cod_method>
                     <label>Cash on Delivery Methods</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>5</sort_order>
+                    <sort_order>8</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
