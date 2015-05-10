@@ -94,7 +94,7 @@ class Shopgo_ShippingCore_Model_Observer
             '_',
             $session->getQuote()->getShippingAddress()->getShippingMethod()
         );
-        $shippingCode   = array_shift($shippingMethod);
+        $shippingCode = array_shift($shippingMethod);
 
         $codEnabledShippingMethods = $helper->codEnabledShippingMethods();
 

@@ -28,13 +28,17 @@ class Shopgo_ShippingCore_Model_Carrier_Skynet extends Shopgo_ShippingCore_Model
     const MODULE_NAME = 'Shopgo_SkynetShipping';
 
     /**
-     * Check if module is active
+     * Check if module is active and shipping service is enabled
      *
      * @return bool
      */
     public function isEnabled()
     {
-        return Mage::helper('core')->isModuleEnabled(self::MODULE_NAME);
+        if (Mage::helper('core')->isModuleEnabled(self::MODULE_NAME)) {
+            return Mage::getModel('skynetshipping/shipment')->isEnabled();
+        }
+
+        return false;
     }
 
     /**
@@ -45,8 +49,12 @@ class Shopgo_ShippingCore_Model_Carrier_Skynet extends Shopgo_ShippingCore_Model
      */
     public function isUsed($carrierCode)
     {
-        return $this->isEnabled()
-            && $carrierCode == Mage::getModel('skynetshipping/carrier_skynet')->getCarrierCode();
+        if ($this->isEnabled()) {
+            return $carrierCode == Mage::getModel('skynetshipping/carrier_skynet')
+                ->getCarrierCode()
+        }
+
+        return false;
     }
 
     /**
