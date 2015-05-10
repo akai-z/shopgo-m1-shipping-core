@@ -87,9 +87,9 @@ class Shopgo_ShippingCore_Adminhtml_Sales_Order_ShipmentController extends Mage_
                 }
             } else {
                 $this->_saveShipment($shipment);
-            }
 
-            $shipment->sendEmail(!empty($data['send_email']), $comment);
+                $shipment->sendEmail(!empty($data['send_email']), $comment);
+            }
 
             $shipmentCreatedMessage = $this->__('The shipment has been created.');
             $labelCreatedMessage    = $this->__('The shipping label has been created.');
