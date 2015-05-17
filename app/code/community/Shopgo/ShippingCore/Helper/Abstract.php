@@ -237,7 +237,7 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
     }
 
     /**
-     * Get cash on delivery method list
+     * Get cash on delivery methods list
      *
      * @param array $toArray
      * @return array|string
@@ -250,29 +250,47 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
     }
 
     /**
-     * Get/Set/Unset cash on delivery enabled methods session values
+     * Get/Set/Unset cash on delivery filtering enabled shipping methods session values
      *
      * @param string $action
      * @param mixed $value
      * @return mixed
      */
-    public function codEnabledShippingMethods($action = 'get', $value = null)
+    public function codFilteringEnabledShippingMethods($action = 'get', $value = null)
     {
         $result  = null;
         $session = Mage::getSingleton('checkout/session');
 
         switch ($action) {
             case 'get':
-                $result = $session->getCodEnabledShippingMethods();
+                $result = $session->getCodFilteringEnabledShippingMethods();
                 break;
             case 'set':
-                $result = $session->setCodEnabledShippingMethods($value);
+                $result = $session->setCodFilteringEnabledShippingMethods($value);
                 break;
             case 'uns':
-                $result = $session->unsCodEnabledShippingMethods();
+                $result = $session->unsCodFilteringEnabledShippingMethods();
                 break;
         }
 
         return $result;
+    }
+
+    /**
+     * Convert street address to a single line
+     *
+     * @param string $address
+     * @return string
+     */
+    public function getSingleLineStreetAddress($address)
+    {
+        if (gettype($address) != 'string') {
+            return $address;
+        }
+
+        // Replace newlines with spaces
+        $address = trim(preg_replace('/\s+/', ' ', $address));
+
+        return $address;
     }
 }

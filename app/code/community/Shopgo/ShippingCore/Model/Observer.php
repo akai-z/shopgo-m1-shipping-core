@@ -89,16 +89,13 @@ class Shopgo_ShippingCore_Model_Observer
         }
 
         $helper = Mage::helper('shippingcore');
+        $isUsingCod = false;
 
-        $shippingMethod = explode(
-            '_',
-            $session->getQuote()->getShippingAddress()->getShippingMethod()
-        );
-        $shippingCode = array_shift($shippingMethod);
+        $shippingMethod = $session->getQuote()->getShippingAddress()->getShippingMethod();
 
-        $codEnabledShippingMethods = $helper->codEnabledShippingMethods();
+        $codFilteringEnabledShippingMethods = $helper->codFilteringEnabledShippingMethods();
 
-        if (!in_array($shippingCode, $codEnabledShippingMethods)) {
+        if (!in_array($shippingMethod, $codFilteringEnabledShippingMethods)) {
             return;
         }
 

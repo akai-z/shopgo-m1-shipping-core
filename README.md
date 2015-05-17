@@ -3,7 +3,7 @@
 ### About Repository ###
 
 * Contains functions commonly used in Shopgo Magento shipping extensions.
-* v1.2.7
+* v1.2.8
 
 ### Author ###
 
