@@ -284,13 +284,8 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
      */
     public function getSingleLineStreetAddress($address)
     {
-        if (gettype($address) != 'string') {
-            return $address;
-        }
-
-        // Replace newlines with spaces
-        $address = trim(preg_replace('/\s+/', ' ', $address));
-
-        return $address;
+        return is_string($address)
+            ? trim(preg_replace('/\s+/', ' ', $address)) // Replace newlines with spaces
+            : $address;
     }
 }
