@@ -51,7 +51,7 @@ class Shopgo_ShippingCore_Model_Carrier_Skynet extends Shopgo_ShippingCore_Model
     {
         if ($this->isEnabled()) {
             return $carrierCode == Mage::getModel('skynetshipping/carrier_skynet')
-                ->getCarrierCode()
+                ->getCarrierCode();
         }
 
         return false;

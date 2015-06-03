@@ -51,7 +51,7 @@ class Shopgo_ShippingCore_Model_Carrier_Aramex extends Shopgo_ShippingCore_Model
     {
         if ($this->isEnabled()) {
             return $carrierCode == Mage::getModel('aramexshipping/carrier_aramex')
-                ->getCarrierCode()
+                ->getCarrierCode();
         }
 
         return false;
