@@ -25,7 +25,11 @@
  */
 class Shopgo_ShippingCore_Model_Carrier_Aramex extends Shopgo_ShippingCore_Model_Carrier_Abstract
 {
+    /**
+     * Aramex shipping module name
+     */
     const MODULE_NAME = 'Shopgo_AramexShipping';
+
 
     /**
      * Check if module is active and shipping service is enabled

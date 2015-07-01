@@ -43,6 +43,7 @@ class Shopgo_ShippingCore_Model_Observer
             'action'     => 'new'
         );
 
+        //TODO: This could be implemented in a better and cleaner way
         $isCorrectRequest = $request->getRouteName() != $requestPathParts['route']
             || $request->getControllerName() != $requestPathParts['controller']
             || $request->getActionName() != $requestPathParts['action'];

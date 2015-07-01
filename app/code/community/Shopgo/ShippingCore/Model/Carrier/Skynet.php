@@ -25,7 +25,11 @@
  */
 class Shopgo_ShippingCore_Model_Carrier_Skynet extends Shopgo_ShippingCore_Model_Carrier_Abstract
 {
+    /**
+     * SkyNet shipping module name
+     */
     const MODULE_NAME = 'Shopgo_SkynetShipping';
+
 
     /**
      * Check if module is active and shipping service is enabled

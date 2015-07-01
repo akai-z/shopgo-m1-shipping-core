@@ -151,7 +151,9 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
         $result = array('price' => $price, 'currency' => $priceCurrencyCode);
 
         if ($priceCurrencyCode != $baseCurrencyCode) {
-            $result = $this->currencyConvert($price, $priceCurrencyCode, $baseCurrencyCode);
+            $result = $this->currencyConvert(
+                $price, $priceCurrencyCode, $baseCurrencyCode
+            );
         }
 
         return $result;
@@ -192,10 +194,12 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
 
         switch ($carrierCode) {
             case 'aramex':
-                $html = Mage::helper('aramexshipping')->_getAdminhtmlShipmentForms($block);
+                $html = Mage::helper('aramexshipping')
+                    ->_getAdminhtmlShipmentForms($block);
                 break;
             case 'skynet':
-                $html = Mage::helper('skynetshipping')->_getAdminhtmlShipmentForms($block);
+                $html = Mage::helper('skynetshipping')
+                    ->_getAdminhtmlShipmentForms($block);
                 break;
         }
 
@@ -225,12 +229,12 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
      */
     public function getDwaCodes()
     {
-        $path = 'shipping/dwa/';
-        $attributes = $this->getDwaNames();
+        $dwaSettings = $this->getShippingSettings('dwa');
+        $attributes  = $this->getDwaNames();
         $result = array();
 
         foreach ($attributes as $attr) {
-            $result[$attr] = Mage::getStoreConfig($path . $attr);
+            $result[$attr] = $dwaSettings[$attr];
         }
 
         return $result;
@@ -244,7 +248,8 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
      */
     public function getCodMethodList($toArray = true)
     {
-        $methods = Mage::getStoreConfig('shipping/cod_method/list');
+        $codSettings = $this->getShippingSettings('cod');
+        $methods     = $codSettings['method_list'];
 
         return $toArray ? explode(',', $methods) : $methods;
     }
@@ -287,5 +292,76 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
         return is_string($address)
             ? trim(preg_replace('/\s+/', ' ', $address)) // Replace newlines with spaces
             : $address;
+    }
+
+    /**
+     * Get cash on delivery currency
+     *
+     * @return string
+     */
+    public function getCodCurrency()
+    {
+        $currency    = Mage::app()->getStore()->getBaseCurrencyCode();
+        $codSettings = $this->getShippingSettings('cod');
+
+        switch ($codSettings['currency']) {
+            case Shopgo_ShippingCore_Model_System_Config_Source_Codcurrency::CURRENT:
+                $currency = Mage::app()->getStore()->getCurrentCurrencyCode();
+                break;
+            case Shopgo_ShippingCore_Model_System_Config_Source_Codcurrency::SPECIFIC:
+                if ($codSettings['specific_currency']) {
+                    $currency = $specificCurrency;
+                }
+                break;
+        }
+
+        return $currency;
+    }
+
+    /**
+     * Get system configuration sales shipping settings
+     *
+     * @param string $group
+     * @return array
+     */
+    public function getShippingSettings($group = '')
+    {
+        $settings = array(
+            'origin' => array('street_line3'),
+            'additional_info' => array(
+                'person_title',  'person_name',
+                'company',       'store_description',
+                'phone_number',  'phone_number_ext',
+                'phone_number2', 'phone_number2_ext',
+                'faxnumber',     'email',
+                'cellphone'
+            ),
+            'dwa' => array(
+                'length', 'width', 'height'
+            ),
+            'cod' => array(
+                'method_list', 'currency', 'specific_currency'
+            )
+        );
+
+        if (isset($settings[$group])) {
+            $settings = $settings[$group];
+
+            foreach ($settings as $field) {
+                $settings[$field] = Mage::getStoreConfig(
+                    'shipping/' . $group . '/' . $field
+                );
+            }
+        } else {
+            foreach ($settings as $_group => $fields) {
+                foreach ($fields as $field) {
+                    $settings[$_group][$field] = Mage::getStoreConfig(
+                        'shipping/' . $_group . '/' . $field
+                    );
+                }
+            }
+        }
+
+        return $settings;
     }
 }

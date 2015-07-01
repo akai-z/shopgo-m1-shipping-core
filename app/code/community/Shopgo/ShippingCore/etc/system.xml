@@ -182,7 +182,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </attribute_set>
-                        <attribute_set_group translate="label">
+                        <attribute_set_group translate="label comment">
                             <label>Attribute Set Group</label>
                             <frontend_type>select</frontend_type>
                             <comment><![CDATA[
@@ -204,7 +204,7 @@
                         </set_attributes>
                     </fields>
                 </dwa>
-                <cod_method>
+                <cod>
                     <label>Cash on Delivery Methods</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>5</sort_order>
@@ -212,7 +212,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <list translate="label">
+                        <method_list translate="label comment">
                             <label>Cash on Delivery Methods</label>
                             <comment><![CDATA[
                                 Select Cash on Delivery methods from the above payment methods list.<br/>
@@ -224,9 +224,29 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
-                        </list>
+                        </method_list>
+                        <currency translate="label">
+                            <label>Currency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>shippingcore/system_config_source_cod_currency</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </currency>
+                        <specific_currency translate="label">
+                            <label>Specific Currency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_currency</source_model>
+                            <backend_model>adminhtml/system_config_backend_currency_base</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><cod_currency>3</cod_currency></depends>
+                        </specific_currency>
                     </fields>
-                </cod_method>
+                </cod>
             </groups>
         </shipping>
     </sections>
