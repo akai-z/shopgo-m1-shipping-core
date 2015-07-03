@@ -321,7 +321,7 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
     /**
      * Get system configuration sales shipping settings
      *
-     * @param string $group
+     * @param string|array $group
      * @return array
      */
     public function getShippingSettings($group = '')
@@ -344,22 +344,38 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
             )
         );
 
-        if (isset($settings[$group])) {
-            $settings = $settings[$group];
+        switch (true) {
+            case is_string($group) && isset($settings[$group]):
+                $settings = $settings[$group];
 
-            foreach ($settings as $field) {
-                $settings[$field] = Mage::getStoreConfig(
-                    'shipping/' . $group . '/' . $field
-                );
-            }
-        } else {
-            foreach ($settings as $_group => $fields) {
-                foreach ($fields as $field) {
-                    $settings[$_group][$field] = Mage::getStoreConfig(
-                        'shipping/' . $_group . '/' . $field
+                foreach ($settings as $field) {
+                    $settings[$field] = Mage::getStoreConfig(
+                        'shipping/' . $group . '/' . $field
                     );
                 }
-            }
+
+                break;
+            case is_array($group) && !empty($group):
+                foreach ($settings as $_group => $fields) {
+                    if (!in_array($_group, $group)) {
+                        continue;
+                    }
+                    foreach ($fields as $field) {
+                        $settings[$_group][$field] = Mage::getStoreConfig(
+                            'shipping/' . $_group . '/' . $field
+                        );
+                    }
+                }
+
+                break;
+            default:
+                foreach ($settings as $_group => $fields) {
+                    foreach ($fields as $field) {
+                        $settings[$_group][$field] = Mage::getStoreConfig(
+                            'shipping/' . $_group . '/' . $field
+                        );
+                    }
+                }
         }
 
         return $settings;

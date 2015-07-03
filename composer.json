@@ -8,8 +8,8 @@
     "description": "Contains functions commonly used in Shopgo Magento shipping extensions",
     "require": {
         "magento-hackathon/magento-composer-installer": "*",
-        "shopgo/core": "dev-master",
-        "shopgo/advanced-ifconfig": "dev-master"
+        "shopgo/core": "*",
+        "shopgo/advanced-ifconfig": "*"
     },
     "authors":[
         {
