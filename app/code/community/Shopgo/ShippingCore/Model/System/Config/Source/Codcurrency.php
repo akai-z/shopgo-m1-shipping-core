@@ -54,11 +54,11 @@ class Shopgo_ShippingCore_Model_System_Config_Source_Codcurrency
             array(
                 'value' => self::BASE,
                 'label' => $adminhtmlHelper->__('Base Currency')
-            )
+            ),
             array(
                 'value' => self::CURRENT,
                 'label' => $adminhtmlHelper->__('Default Display Currency')
-            )
+            ),
             array(
                 'value' => self::SPECIFIC,
                 'label' => $adminhtmlHelper->__('Specific Currency')
