@@ -205,7 +205,7 @@
                     </fields>
                 </dwa>
                 <cod>
-                    <label>Cash on Delivery Methods</label>
+                    <label>Cash on Delivery</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>5</sort_order>
                     <show_in_default>1</show_in_default>
@@ -213,7 +213,7 @@
                     <show_in_store>1</show_in_store>
                     <fields>
                         <method_list translate="label comment">
-                            <label>Cash on Delivery Methods</label>
+                            <label>Methods</label>
                             <comment><![CDATA[
                                 Select Cash on Delivery methods from the above payment methods list.<br/>
                                 <strong style="color:#3D5B9C">Note:&nbsp;</strong>Make sure that the COD payment methods that you want to select are enabled in (System > Configuration > Payment Methods page).
@@ -243,7 +243,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
-                            <depends><cod_currency>3</cod_currency></depends>
+                            <depends><currency>3</currency></depends>
                         </specific_currency>
                     </fields>
                 </cod>
