@@ -28,6 +28,7 @@ class Shopgo_ShippingCore_Model_System_Config_Source_Attributesetgroup
     /**
      * Get attribute set groups
      *
+     * @param int $attrSet
      * @return array
      */
     public function toOptionArray($attrSet)

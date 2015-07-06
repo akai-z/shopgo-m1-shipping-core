@@ -64,7 +64,7 @@ class Shopgo_ShippingCore_Model_Carrier_Skynet extends Shopgo_ShippingCore_Model
     /**
      * Save shipment
      *
-     * @param object $shipment
+     * @param Mage_Sales_Model_Order_Shipment $shipment
      * @param array $data
      * @return bool
      */

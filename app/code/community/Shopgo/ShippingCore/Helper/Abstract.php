@@ -185,7 +185,7 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
      * Get order's shipping method adminhtml ship page forms
      *
      * @param string $carrierCode
-     * @param object $block
+     * @param Mage_Adminhtml_Block_Sales_Order_Shipment_Create_Form $block
      * @return string
      */
     public function getAdminhtmlShipmentForms($carrierCode, $block)
@@ -297,14 +297,20 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
     /**
      * Get cash on delivery currency
      *
+     * @param Mage_Sales_Model_Order|null $order
      * @return string
      */
-    public function getCodCurrency()
+    public function getCodCurrency($order = null)
     {
         $currency    = Mage::app()->getStore()->getBaseCurrencyCode();
         $codSettings = $this->getShippingSettings('cod');
 
         switch ($codSettings['currency']) {
+            case Shopgo_ShippingCore_Model_System_Config_Source_Codcurrency::ORDER:
+                if (is_object($order) && $order instanceof Mage_Sales_Model_Order) {
+                    $currency = $order->getOrderCurrencyCode();
+                }
+                break;
             case Shopgo_ShippingCore_Model_System_Config_Source_Codcurrency::CURRENT:
                 $currency = Mage::app()->getStore()->getCurrentCurrencyCode();
                 break;

@@ -31,14 +31,19 @@ class Shopgo_ShippingCore_Model_System_Config_Source_Codcurrency
     const BASE     = 1;
 
     /**
+     * Order currency option value
+     */
+    const ORDER    = 2;
+
+    /**
      * Display/Currency currency option value
      */
-    const CURRENT  = 2;
+    const CURRENT  = 3;
 
     /**
      * Specific currency option value
      */
-    const SPECIFIC = 3;
+    const SPECIFIC = 4;
 
 
     /**
@@ -46,7 +51,7 @@ class Shopgo_ShippingCore_Model_System_Config_Source_Codcurrency
      *
      * @return array
      */
-    public function toOptionArray($attrSet)
+    public function toOptionArray()
     {
         $adminhtmlHelper = Mage::helper('adminhtml');
 
@@ -54,6 +59,10 @@ class Shopgo_ShippingCore_Model_System_Config_Source_Codcurrency
             array(
                 'value' => self::BASE,
                 'label' => $adminhtmlHelper->__('Base Currency')
+            ),
+            array(
+                'value' => self::ORDER,
+                'label' => $adminhtmlHelper->__('Order Currency')
             ),
             array(
                 'value' => self::CURRENT,

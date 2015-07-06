@@ -28,6 +28,7 @@ class Shopgo_ShippingCore_Model_System_Config_Source_Activepaymentmethod
     /**
      * Get active payment methods
      *
+     * @param bool $isMultiSelect
      * @return array
      */
     public function toOptionArray($isMultiSelect = false)

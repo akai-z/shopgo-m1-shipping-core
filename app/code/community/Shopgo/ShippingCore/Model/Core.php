@@ -28,7 +28,7 @@ class Shopgo_ShippingCore_Model_Core extends Mage_Core_Model_Abstract
     /**
      * Save shipment
      *
-     * @param object $shipment
+     * @param Mage_Sales_Model_Order_Shipment $shipment
      * @param array $data
      * @return bool
      */

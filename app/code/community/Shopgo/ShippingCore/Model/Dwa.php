@@ -30,7 +30,7 @@ class Shopgo_ShippingCore_Model_Dwa extends Mage_Core_Model_Abstract
      *
      * @param string $attrSet
      * @param string $attrSetGroup
-     * @param object $setup
+     * @param Mage_Catalog_Model_Resource_Setup $setup
      * @return bool
      */
     public function setDwAttributes($attrSet, $attrSetGroup, $setup)
@@ -69,7 +69,7 @@ class Shopgo_ShippingCore_Model_Dwa extends Mage_Core_Model_Abstract
      * @param array $data
      * @param string $attrSet
      * @param string $attrSetGroup
-     * @param object $setup
+     * @param Mage_Catalog_Model_Resource_Setup|null $setup
      * @return bool
      */
     private function _addAttribute($data, $attrSet = 'default', $attrSetGroup = 'General', $setup = null)

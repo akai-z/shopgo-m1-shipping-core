@@ -29,7 +29,7 @@ class Shopgo_ShippingCore_Model_Observer
      * Check whether used shipment CSS and JS files
      * can be included or not
      *
-     * @param object $observer
+     * @param Varien_Event_Observer $observer
      * @return null
      */
     public function setAdminSalesOrderShipmentNewCssJsFiles(Varien_Event_Observer $observer)
@@ -78,7 +78,7 @@ class Shopgo_ShippingCore_Model_Observer
     /**
      * Remove non cash on delivery methods from checkout page payment step
      *
-     * @param object $observer
+     * @param Varien_Event_Observer $observer
      * @return null
      */
     public function filterOutNonCodPaymentMethods(Varien_Event_Observer $observer)
