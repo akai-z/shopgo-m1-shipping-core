@@ -316,7 +316,16 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
                 break;
             case Shopgo_ShippingCore_Model_System_Config_Source_Codcurrency::SPECIFIC:
                 if ($codSettings['specific_currency']) {
-                    $currency = $specificCurrency;
+                    $allowedCurrencies =
+                        Mage::getModel('shippingcore/system_config_source_allowedcurrencies')
+                            ->toOptionArray();
+
+                    foreach ($allowedCurrencies as $ac) {
+                        if ($codSettings['specific_currency'] == $ac['value']) {
+                            $currency = $codSettings['specific_currency'];
+                            break;
+                        }
+                    }
                 }
                 break;
         }

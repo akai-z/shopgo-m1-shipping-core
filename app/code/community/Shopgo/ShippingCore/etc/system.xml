@@ -234,11 +234,14 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </currency>
-                        <specific_currency translate="label">
+                        <specific_currency translate="label comment">
                             <label>Specific Currency</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_currency</source_model>
-                            <backend_model>adminhtml/system_config_backend_currency_base</backend_model>
+                            <comment><![CDATA[
+                                You can add more currencies to the list from: System > Configuration > General > Currency Setup > Currency Options > Allowed Currencies.<br/>
+                                <strong style="color:#3D5B9C">Note:&nbsp;</strong>In case that the selected currency got removed from allowed currencies, you would have to select specify another one. Otherwise, the base currency will be selected by default.
+                            ]]></comment>
+                             <frontend_type>select</frontend_type>
+                            <source_model>shippingcore/system_config_source_allowedcurrencies</source_model>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
