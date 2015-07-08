@@ -249,7 +249,7 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
     public function getCodMethodList($toArray = true)
     {
         $codSettings = $this->getShippingSettings('cod');
-        $methods     = $codSettings['method_list'];
+        $methods     = $codSettings['payment_methods'];
 
         return $toArray ? explode(',', $methods) : $methods;
     }
@@ -355,7 +355,7 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
                 'length', 'width', 'height'
             ),
             'cod' => array(
-                'method_list', 'currency', 'specific_currency'
+                'payment_methods', 'currency', 'specific_currency'
             )
         );
 

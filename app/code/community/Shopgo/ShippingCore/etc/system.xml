@@ -212,10 +212,10 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <method_list translate="label comment">
-                            <label>Methods</label>
+                        <payment_methods translate="label comment">
+                            <label>Payment Methods</label>
                             <comment><![CDATA[
-                                Select Cash on Delivery methods from the above payment methods list.<br/>
+                                Select Cash on Delivery methods from the above active payment methods list.<br/>
                                 <strong style="color:#3D5B9C">Note:&nbsp;</strong>Make sure that the COD payment methods that you want to select are enabled in (System > Configuration > Payment Methods page).
                             ]]></comment>
                             <frontend_type>multiselect</frontend_type>
@@ -224,7 +224,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
-                        </method_list>
+                        </payment_methods>
                         <currency translate="label">
                             <label>Currency</label>
                             <frontend_type>select</frontend_type>
