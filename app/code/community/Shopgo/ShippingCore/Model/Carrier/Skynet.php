@@ -38,11 +38,13 @@ class Shopgo_ShippingCore_Model_Carrier_Skynet extends Shopgo_ShippingCore_Model
      */
     public function isEnabled()
     {
+        $result = false;
+
         if (Mage::helper('core')->isModuleEnabled(self::MODULE_NAME)) {
-            return Mage::getModel('skynetshipping/shipment')->isEnabled();
+            $result = Mage::getModel('skynetshipping/shipment')->isEnabled();
         }
 
-        return false;
+        return $result;
     }
 
     /**
@@ -53,12 +55,14 @@ class Shopgo_ShippingCore_Model_Carrier_Skynet extends Shopgo_ShippingCore_Model
      */
     public function isUsed($carrierCode)
     {
+        $result = false;
+
         if ($this->isEnabled()) {
-            return $carrierCode == Mage::getModel('skynetshipping/carrier_skynet')
+            $result = $carrierCode == Mage::getModel('skynetshipping/carrier_skynet')
                 ->getCarrierCode();
         }
 
-        return false;
+        return $result;
     }
 
     /**
@@ -70,23 +74,22 @@ class Shopgo_ShippingCore_Model_Carrier_Skynet extends Shopgo_ShippingCore_Model
      */
     public function saveShipment($shipment, $data)
     {
-        $skynetShipment = true;
+        $result = true;
 
         if (isset($data['skynet'])) {
-            $skynetShipment = Mage::getModel('skynetshipping/shipment')
-                ->prepareShipment(
-                    $shipment,
-                    $data['skynet']
-                 );
+            $result = Mage::getModel('skynetshipping/shipment')->prepareShipment(
+                $shipment,
+                $data['skynet']
+            );
         }
 
-        if (!$skynetShipment) {
+        if (!$result) {
             if (isset($data['skynet']['shipment'])) {
                 Mage::getSingleton('adminhtml/session')
                     ->setShipSkynetShipmentData($data['skynet']['shipment']);
             }
         }
 
-        return $skynetShipment;
+        return $result;
     }
 }

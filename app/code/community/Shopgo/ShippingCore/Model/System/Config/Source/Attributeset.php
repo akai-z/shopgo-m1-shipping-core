@@ -47,7 +47,7 @@ class Shopgo_ShippingCore_Model_System_Config_Source_Attributeset
 
         foreach ($attrSetCollection as $set) {
             $options[] = array(
-               'value' => $set->getAttributeSetId(),
+                'value' => $set->getAttributeSetId(),
                 'label' => $set->getAttributeSetName()
             );
         }

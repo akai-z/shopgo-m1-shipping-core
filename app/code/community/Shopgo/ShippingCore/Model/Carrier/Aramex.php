@@ -38,11 +38,13 @@ class Shopgo_ShippingCore_Model_Carrier_Aramex extends Shopgo_ShippingCore_Model
      */
     public function isEnabled()
     {
+        $result = false;
+
         if (Mage::helper('core')->isModuleEnabled(self::MODULE_NAME)) {
-            return Mage::getModel('aramexshipping/shipment')->isEnabled();
+            $result = Mage::getModel('aramexshipping/shipment')->isEnabled();
         }
 
-        return false;
+        return $result;
     }
 
     /**
@@ -53,12 +55,14 @@ class Shopgo_ShippingCore_Model_Carrier_Aramex extends Shopgo_ShippingCore_Model
      */
     public function isUsed($carrierCode)
     {
+        $result = false;
+
         if ($this->isEnabled()) {
-            return $carrierCode == Mage::getModel('aramexshipping/carrier_aramex')
+            $result = $carrierCode == Mage::getModel('aramexshipping/carrier_aramex')
                 ->getCarrierCode();
         }
 
-        return false;
+        return $result;
     }
 
     /**
@@ -70,17 +74,16 @@ class Shopgo_ShippingCore_Model_Carrier_Aramex extends Shopgo_ShippingCore_Model
      */
     public function saveShipment($shipment, $data)
     {
-        $aramexShipment = true;
+        $result = true;
 
         if (isset($data['aramex'])) {
-            $aramexShipment = Mage::getModel('aramexshipping/shipment')
-                ->prepareShipment(
-                    $shipment,
-                    $data['aramex']
-                 );
+            $result = Mage::getModel('aramexshipping/shipment')->prepareShipment(
+                $shipment,
+                $data['aramex']
+            );
         }
 
-        if (!$aramexShipment) {
+        if (!$result) {
             if (isset($data['aramex']['shipment'])) {
                 Mage::getSingleton('adminhtml/session')
                     ->setShipAramexShipmentData($data['aramex']['shipment']);
@@ -93,6 +96,6 @@ class Shopgo_ShippingCore_Model_Carrier_Aramex extends Shopgo_ShippingCore_Model
             }
         }
 
-        return $aramexShipment;
+        return $result;
     }
 }

@@ -44,7 +44,7 @@ class Shopgo_ShippingCore_Model_System_Config_Source_Height
 
         foreach ($attributes as $attr) {
             $options[] = array(
-               'value' => $attr->getAttributeCode(),
+                'value' => $attr->getAttributeCode(),
                 'label' => $attr->getFrontendLabel() . ' (' . $attr->getAttributeCode() . ')'
             );
         }

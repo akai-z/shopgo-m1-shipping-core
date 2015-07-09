@@ -26,6 +26,22 @@
 class Shopgo_ShippingCore_Model_Dwa extends Mage_Core_Model_Abstract
 {
     /**
+     * CONFIG path constant: LENGTH
+    */
+    const XML_PATH_DWA_LENGTH = 'shipping/dwa/length';
+
+    /**
+     * CONFIG path constant: WIDTH
+    */
+    const XML_PATH_DWA_WIDTH  = 'shipping/dwa/width';
+
+    /**
+     * CONFIG path constant: HEIGHT
+    */
+    const XML_PATH_DWA_HEIGHT = 'shipping/dwa/height';
+
+
+    /**
      * Set dimensional weight attributes
      *
      * @param string $attrSet
@@ -41,17 +57,17 @@ class Shopgo_ShippingCore_Model_Dwa extends Mage_Core_Model_Abstract
             array(
                 'code'     => 'length',
                 'label'    => 'Length',
-                'config_path' => 'shipping/dwa/length'
+                'config_path' => self::XML_PATH_DWA_LENGTH
             ),
             array(
                 'code'     => 'width',
                 'label'    => 'Width',
-                'config_path' => 'shipping/dwa/width'
+                'config_path' => self::XML_PATH_DWA_WIDTH
             ),
             array(
                 'code'     => 'height',
                 'label'    => 'Height',
-                'config_path' => 'shipping/dwa/height'
+                'config_path' => self::XML_PATH_DWA_HEIGHT
             )
         );
 
