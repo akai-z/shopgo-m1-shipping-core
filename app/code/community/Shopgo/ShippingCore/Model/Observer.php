@@ -96,17 +96,16 @@ class Shopgo_ShippingCore_Model_Observer
 
         $codFilteringEnabledShippingMethods = $helper->codFilteringEnabledShippingMethods();
 
-        if (!in_array($shippingMethod, $codFilteringEnabledShippingMethods)) {
-            return;
+        if (is_array($codFilteringEnabledShippingMethods)
+            && in_array($shippingMethod, $codFilteringEnabledShippingMethods)) {
+            $codMethods = $helper->getCodMethodList();
+
+            $result = $observer->getEvent()->getResult();
+            $method = $observer->getEvent()->getMethodInstance();
+
+            $result->isAvailable =
+                !in_array($method->getCode(), $codMethods)
+                ? false : true;
         }
-
-        $codMethods = $helper->getCodMethodList();
-
-        $result = $observer->getEvent()->getResult();
-        $method = $observer->getEvent()->getMethodInstance();
-
-        $result->isAvailable =
-            !in_array($method->getCode(), $codMethods)
-            ? false : true;
     }
 }

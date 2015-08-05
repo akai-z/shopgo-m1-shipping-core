@@ -258,10 +258,10 @@ abstract class Shopgo_ShippingCore_Helper_Abstract extends Shopgo_Core_Helper_Ab
      * Get/Set/Unset cash on delivery filtering enabled shipping methods session values
      *
      * @param string $action
-     * @param mixed $value
+     * @param array $value
      * @return mixed
      */
-    public function codFilteringEnabledShippingMethods($action = 'get', $value = null)
+    public function codFilteringEnabledShippingMethods($action = 'get', $value = array())
     {
         $result  = null;
         $session = Mage::getSingleton('checkout/session');
