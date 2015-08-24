@@ -100,12 +100,19 @@ class Shopgo_ShippingCore_Model_Observer
             && in_array($shippingMethod, $codFilteringEnabledShippingMethods)) {
             $codMethods = $helper->getCodMethodList();
 
+            $store  = Mage::app()->getStore();
             $result = $observer->getEvent()->getResult();
+
             $method = $observer->getEvent()->getMethodInstance();
+            $methodCode = $method->getCode();
+
+            $isMethodActive = Mage::getStoreConfigFlag(
+                'payment/' . $methodCode . '/active', $store
+            );
 
             $result->isAvailable =
-                !in_array($method->getCode(), $codMethods)
-                ? false : true;
+                ($isMethodActive && in_array($methodCode, $codMethods))
+                ? true : false;
         }
     }
 }
