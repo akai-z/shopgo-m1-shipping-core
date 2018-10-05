@@ -1,4 +1,4 @@
-# ShopGo Shipping Core #
+# ShopGo Shipping Core `[UNMAINTAINED]` #
 
 ### About Repository ###
 
